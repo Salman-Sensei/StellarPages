@@ -1,8 +1,109 @@
-# 🌌 StellarPages — Ebook Reader
+# 🌌 StellarPages - Ebook Reader
 
-> *A universe of stories at your fingertips.*
+<p align="center">
+  <img src="screenshots/home.png" width="200" alt="Home Screen"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="screenshots/home2.png" width="200" alt="Bookshelf"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="screenshots/settings.png" width="200" alt="Settings"/>
+</p>
 
-A beautiful space-themed Flutter ebook reader app, inspired by Moon+ Reader.
+<p align="center">
+  <b>A universe of stories at your fingertips.</b><br/>
+  A beautiful, offline-first ebook reader with 10 space-themed skins, cloud sync, TTS, and more.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter"/>
+  <img src="https://img.shields.io/badge/Platform-Android%20%7C%20Web-green"/>
+  <img src="https://img.shields.io/badge/License-MIT-purple"/>
+  <img src="https://img.shields.io/badge/Status-Active-brightgreen"/>
+</p>
+
+---
+
+## ✨ What is StellarPages?
+
+StellarPages is a **Flutter-based ebook reader** inspired by Moon+ Reader, built with a space theme throughout. You can import EPUB, PDF, and TXT files, read them offline, customize fonts and themes, and sync your library to the cloud.
+
+Think of it as your personal reading universe - every book is a star.
+
+---
+
+## 📸 Screenshots
+
+| Home  | Reading Stats | Settings |
+|:---:|:---:|:---:|
+| ![Home](screenshots/home.png) | ![Home2](screenshots/home2.png) | ![Settings](screenshots/settings.png) |
+
+---
+
+## 🚀 Features
+
+### 📚 Reading
+| Feature | Details |
+|---|---|
+| **EPUB Support** | Full EPUB & EPUB3 rendering with chapter navigation |
+| **PDF Viewer** | Smooth page-by-page PDF reading |
+| **TXT Reader** | Clean scrollable plain text view |
+| **Auto-Scroll** | 5 speed levels - hands-free reading |
+| **Text-to-Speech** | App reads your book aloud |
+| **Font Controls** | Adjust size, line height, and font family |
+| **Volume Key Paging** | Turn pages with volume buttons (Android) |
+
+### 🎨 Themes (10 total)
+| Theme | Vibe |
+|---|---|
+| 🌌 Deep Space | Dark blue - the default |
+| 🔮 Nebula | Purple & pink |
+| 🌈 Aurora | Teal & green |
+| ⭐ Starlight | Dark gold |
+| 💫 Cosmic Dust | Blue-grey |
+| 🌅 Sunrise Planet | Light / Day mode |
+| 📜 Old Galaxy | Sepia / Warm |
+| 🔴 Mars | Dark red |
+| ⚫ Black Hole | Pure black AMOLED |
+| 🌿 Galaxy Mint | Dark mint |
+
+### 🔖 Library Management
+- Import books from your device storage
+- Beautiful book grid with cover art and progress bars
+- Long-press a book for options (details, remove)
+- Reading progress saved automatically
+
+### ☁️ Anti-Gravity Cloud (Cloud Sync)
+- Sync your books, bookmarks, and highlights to **Google Drive**
+- Restore your full library on any device
+- Powered by **Firebase** backend
+- Works seamlessly in the background
+
+### 📊 Reading Stats
+- Total books read
+- Total reading time
+- Per-book progress tracking
+- Currently reading vs finished
+
+### 🔖 Bookmarks & Highlights
+- Add bookmarks with custom notes
+- Long-press text to highlight passages
+- 4 highlight colors (yellow, green, blue, pink)
+- All saved locally with Hive database
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Framework** | Flutter 3.x (Dart) |
+| **EPUB Rendering** | `epub_view` |
+| **PDF Rendering** | `syncfusion_flutter_pdfviewer` |
+| **Local Database** | `hive` + `hive_flutter` |
+| **Cloud Backend** | Firebase + Google Drive API |
+| **State Management** | `provider` (ChangeNotifier) |
+| **File Picker** | `file_picker` |
+| **Text-to-Speech** | `flutter_tts` |
+| **Auth** | `google_sign_in` |
 
 ---
 
@@ -10,160 +111,111 @@ A beautiful space-themed Flutter ebook reader app, inspired by Moon+ Reader.
 
 ```
 lib/
-├── main.dart                    # App entry point
+├── main.dart                     # App entry point & Firebase init
 ├── models/
-│   ├── book_model.dart          # Book, Bookmark, Highlight data models
-│   └── book_model.g.dart        # Hive adapter (auto-generated)
+│   ├── book_model.dart           # Book, Bookmark, Highlight data models
+│   └── book_model.g.dart         # Hive adapters (auto-generated)
 ├── themes/
-│   └── app_themes.dart          # 10 space themes (Deep Space, Nebula, etc.)
+│   └── app_themes.dart           # All 10 space themes with full color schemes
 ├── utils/
-│   └── app_state.dart           # State management (ChangeNotifier)
+│   └── app_state.dart            # Global state - books, settings, bookmarks
 ├── widgets/
-│   ├── starfield_background.dart # Animated star background
-│   └── book_card.dart            # Book grid card widget
+│   ├── starfield_background.dart # Animated twinkling star background
+│   └── book_card.dart            # Book card with cover + progress bar
 └── screens/
-    ├── bookshelf_screen.dart     # Home — book library grid
-    ├── reader_screen.dart        # Full EPUB/PDF/TXT reader
-    ├── settings_screen.dart      # Themes, font, cloud sync
-    └── stats_screen.dart         # Reading statistics
+    ├── bookshelf_screen.dart     # Home screen - book library grid
+    ├── reader_screen.dart        # Full reader - EPUB/PDF/TXT + controls
+    ├── settings_screen.dart      # Themes, fonts, cloud sync settings
+    └── stats_screen.dart         # Reading statistics dashboard
 ```
 
 ---
 
-## 🚀 Quick Start
+## ⚡ Quick Start
 
-### 1. Install Flutter
-Follow https://flutter.dev/docs/get-started/install
+### Prerequisites
+- Flutter 3.x installed → [Get Flutter](https://flutter.dev/docs/get-started/install)
+- Android Studio (for Android builds)
+- Git
 
-### 2. Add dependencies
+### 1. Clone the repo
 ```bash
-cd stellar_pages
-flutter pub add provider uuid
+git clone https://github.com/Salman-Sensei/StellarPages.git
+cd StellarPages
+```
+
+### 2. Install dependencies
+```bash
 flutter pub get
 ```
 
-### 3. Run
+### 3. Run the app
 ```bash
-flutter run
+# On Chrome (quick preview)
+flutter run -d chrome
+
+# On Android phone (recommended)
+flutter run -d android
+
+# List available devices
+flutter devices
 ```
 
 ---
 
 ## 📦 Dependencies
 
-| Package | Purpose |
-|---|---|
-| `epub_view` | Render EPUB files |
-| `syncfusion_flutter_pdfviewer` | Render PDF files |
-| `file_picker` | Import files from device |
-| `hive` + `hive_flutter` | Local database for books/bookmarks |
-| `flutter_tts` | Text-to-speech |
-| `provider` | State management |
-| `percent_indicator` | Progress bars |
-| `uuid` | Unique IDs for books |
-
----
-
-## ✨ Features Built
-
-### MVP (Complete)
-- [x] **Bookshelf** — Grid layout with book covers and progress
-- [x] **EPUB Reader** — Full text rendering with chapter navigation
-- [x] **PDF Reader** — Syncfusion PDF viewer
-- [x] **TXT Reader** — Scrollable text view
-- [x] **10 Themes** — Deep Space, Nebula, Aurora, Starlight, Mars, Sunrise, Sepia, Black Hole, Cosmic Dust, Galaxy Mint
-- [x] **Font Size + Line Height** — Adjustable sliders
-- [x] **Font Family** — Georgia, Serif, Monospace, Sans-serif
-- [x] **Bookmarks** — Add/view bookmarks with notes
-- [x] **Reading Timer** — Track time spent reading
-- [x] **Progress Tracking** — Per-book progress %
-- [x] **Auto-scroll** — 5 speed levels
-- [x] **TTS** — Text-to-speech toggle
-- [x] **Stats Screen** — Total time, books read, progress
-
-### Animated
-- [x] **Starfield Background** — Twinkling animated stars (dark themes)
-- [x] **Smooth theme transitions**
-
----
-
-## 🔧 Next Steps (v2.0)
-
-### Cloud Sync (Anti-Gravity Cloud)
-```dart
-// Wire up in settings_screen.dart
-// 1. Add google_sign_in + googleapis packages
-// 2. Authenticate user
-// 3. Upload Hive box file to Google Drive
-// 4. Download on new device
-```
-
-### Dictionary (tap word to define)
-```dart
-// In reader_screen.dart, wrap text with SelectableText
-// OnSelectionChanged → show definition popup
-// Use a dictionary API or local wordlist
-```
-
-### Highlights
-```dart
-// SelectableText with onSelectionChanged
-// Show color picker popup
-// Save Highlight to Hive via AppState.addHighlight()
-```
-
-### Volume Key Paging (Android)
-```dart
-// Add to MainActivity.kt:
-// override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-//     if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) { /* next page */ }
-//     if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) { /* prev page */ }
-// }
+```yaml
+epub_view: ^4.3.0                    # EPUB rendering
+syncfusion_flutter_pdfviewer: ^25.x  # PDF rendering
+file_picker: ^8.0.0                  # Import files from device
+hive: ^2.2.3                         # Local NoSQL database
+hive_flutter: ^1.1.0                 # Hive Flutter integration
+flutter_tts: ^4.0.2                  # Text-to-speech
+firebase_core: ^3.3.0                # Firebase backend
+google_sign_in: ^6.2.1               # Google auth for cloud sync
+provider: ^6.x                       # State management
+percent_indicator: ^4.2.3            # Progress bars
+uuid: ^4.x                           # Unique book IDs
 ```
 
 ---
 
-## 🎨 Themes
+## 🗺 Roadmap
 
-| # | Name | Emoji | Style |
-|---|---|---|---|
-| 1 | Deep Space | 🌌 | Dark blue — default |
-| 2 | Nebula | 🔮 | Purple/pink |
-| 3 | Aurora | 🌈 | Teal/green |
-| 4 | Starlight | ⭐ | Dark gold |
-| 5 | Cosmic Dust | 💫 | Blue-grey |
-| 6 | Sunrise Planet | 🌅 | Light/day mode |
-| 7 | Old Galaxy | 📜 | Sepia |
-| 8 | Mars | 🔴 | Dark red |
-| 9 | Black Hole | ⚫ | Pure black |
-| 10 | Galaxy Mint | 🌿 | Dark mint |
-
----
-
-## 📱 Supported Formats
-- `.epub` / `.epub3` — Full chapter navigation
-- `.pdf` — Page-by-page viewer
-- `.txt` — Plain text reader
+- [x] EPUB / PDF / TXT reader
+- [x] 10 space themes
+- [x] Bookmarks & notes
+- [x] Reading stats
+- [x] Text-to-speech
+- [x] Auto-scroll
+- [x] Firebase cloud sync
+- [ ] Dictionary (tap any word)
+- [ ] Full highlight system
+- [ ] Volume key paging
+- [ ] Play Store release
+- [ ] iOS support
 
 ---
 
-## 🏪 Play Store Listing
+## 🤝 Contributing
 
-**Title:** StellarPages - Ebook Reader  
-**Short:** A universe of stories. Read EPUB, PDF, TXT offline.  
-**Description:**  
-Navigate the cosmos of literature with StellarPages — a beautiful, fast, offline ebook reader.
+Pull requests are welcome! For major changes, open an issue first.
 
-✨ **Features:**  
-• Read EPUB, PDF, TXT files  
-• 10 stunning space themes  
-• Adjustable font size & family  
-• Auto-scroll at 5 speeds  
-• Bookmarks & notes  
-• Text-to-speech  
-• Reading statistics  
-• Anti-Gravity Cloud sync (coming soon)
+1. Fork the repo
+2. Create your branch: `git checkout -b feature/amazing-feature`
+3. Commit: `git commit -m "Add amazing feature"`
+4. Push: `git push origin feature/amazing-feature`
+5. Open a Pull Request
 
 ---
 
-*Built with Flutter 💙 by StellarPages*
+## 📄 License
+
+MIT License - feel free to use, modify, and distribute.
+
+---
+
+<p align="center">
+  Built with 💙 Flutter &nbsp;|&nbsp; 🌌 StellarPages
+</p>
